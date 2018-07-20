@@ -10,20 +10,23 @@ namespace Vidly.Controllers
 {
 	public class MoviesController : Controller
 	{
+		List<Movie> movies = new List<Movie>();
+		List<Customer> customers = new List<Customer>();
+
+		public MoviesController() {
+			movies.Add(new Movie { Id = 1, Name = "Shrek" });
+			movies.Add(new Movie { Id = 2, Name = "Wall-E" });
+
+
+			customers.Add(new Customer { Name = "Customer 1" });
+			customers.Add(new Customer { Name = "Customer 2" });
+		}
+
 		// GET: Movies
 		public ActionResult Random()
 		{
-			var movie = new Movie() {
-				Name = "Shrek!"
-			};
-
-			var customers = new List<Customer> {
-				new Customer { Name = "Customer 1"},
-				new Customer { Name = "Customer 2"}
-			};
-
 			var viewModel = new RandomMovieViewModel{
-				Movie = movie,
+				Movie = movies.Find(x => x.Id == 1),
 				Customers = customers
 			};
 
@@ -45,21 +48,29 @@ namespace Vidly.Controllers
 			return Content("id = " + id);
 		}
 
-		public ActionResult Index(int? pageIndex, string sortBy) {
-			if (!pageIndex.HasValue) {
-				pageIndex = 1;
-			}
+		//public ActionResult Index(int? pageIndex, string sortBy) {
+		//	if (!pageIndex.HasValue) {
+		//		pageIndex = 1;
+		//	}
 
-			if(String.IsNullOrWhiteSpace(sortBy)) {
-				sortBy = "Name";
-			}
+		//	if(String.IsNullOrWhiteSpace(sortBy)) {
+		//		sortBy = "Name";
+		//	}
 
-			return Content($"pageIndex={pageIndex} & sortBy={sortBy}");
+		//	return Content($"pageIndex={pageIndex} & sortBy={sortBy}");
+		//}
+		public ActionResult Index() {
+			return View(movies);
 		}
 
 		[Route("movies/released/{year}/{month:regex(\\d{2}):range(1,12)}")]
 		public ActionResult ByReleaseYear(int year, int month) {
 			return Content(year + "/" + month);
+		}
+
+		[Route("Movies/Details/{id}")]
+		public ActionResult GetDetail(int id) {
+			return View("Detail", movies.Find(x => x.Id == id));
 		}
 	}
 }

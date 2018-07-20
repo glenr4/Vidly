@@ -9,13 +9,11 @@ namespace Vidly.Controllers
 {
 	public class CustomersController : Controller
 	{
-		List<Customer> customers;
+		List<Customer> customers = new List<Customer>();
 
 		public CustomersController() {
-			customers = new List<Customer> {
-				new Customer { Id = 1, Name = "John Smith"},
-				new Customer { Id = 2, Name = "Mary Williams"}
-			};
+			customers.Add(new Customer { Id = 1, Name = "John Smith" });
+			customers.Add(new Customer { Id = 2, Name = "Mary Williams" });
 		}
 
 
@@ -26,7 +24,7 @@ namespace Vidly.Controllers
 		}
 
 		[Route("Customers/Details/{id}")]
-		public ActionResult GetCustomerDetail(int id) {
+		public ActionResult GetDetail(int id) {
 			return View("Detail", customers.Find(x => x.Id == id));
 		}
 	}

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Vidly.Models.Customer>
+﻿@model IEnumerable<Vidly.Models.Movie>
 
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
     <title>Index</title>
 </head>
 <body>
-    <h1>Customers</h1>
+    <h1>Movies</h1>
     @if (Model.Count() > 0) {
 
 
@@ -23,7 +23,7 @@
         </thead>
         <tbody>
             @foreach (var item in Model) {
-                <tr class="table-default" onclick="location.href = '@(Url.Action("Details", "Customers", new { id = item.Id }))'">
+                <tr class="table-default" onclick="location.href = '@(Url.Action("Details", "Movies", new { id = item.Id }))'">
                     <td>
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
@@ -33,7 +33,7 @@
     </table>
     }
     else {
-        <p>We currently don't have any customers :(</p>
+        <p>We currently don't have any movies :(</p>
     }
 </body>
 </html>
