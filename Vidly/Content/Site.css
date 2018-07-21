@@ -1,7 +1,6 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    /*padding: 50px 50px 20px 50px;*/
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -22,12 +21,4 @@ input,
 select,
 textarea {
     max-width: 280px;
-}
-
-/*.bs-component{
-    padding: 0px 50px;
-}*/
-
-.navbar{
-    padding: 0px 78px;
 }
