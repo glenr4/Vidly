@@ -9,62 +9,36 @@ using Vidly.ViewModels;
 namespace Vidly.Controllers
 {
 	public class MoviesController : Controller {
-		private List<Movie> _movies = new List<Movie>();
-		private List<Customer> _customers = new List<Customer>();
+		private ApplicationDbContext _context;
 
 		public MoviesController() {
-			_movies.Add(new Movie { Id = 1, Name = "Shrek" });
-			_movies.Add(new Movie { Id = 2, Name = "Wall-E" });
-
-
-			_customers.Add(new Customer { Name = "Customer 1" });
-			_customers.Add(new Customer { Name = "Customer 2" });
+			_context = new ApplicationDbContext();
 		}
 
 		// GET: Movies
 		public ActionResult Random() {
-			var movie = _movies.Find(x => x.Id == 1);
+			var movie = _context.Movies.Where(x => x.Id == 1).FirstOrDefault();
 
-			if (movie == null || _customers == null) {
+			if (movie == null) {
 				return new HttpNotFoundResult();
 			}
 
 			var viewModel = new RandomMovieViewModel {
 				Movie = movie,
-				Customers = _customers
+				Customers = null
 			};
 
 			return View(viewModel);
-
-			// This method ends up being too verbose in Random.cshtml
-			// Can also use ViewBag but still have similar problems with casting
-			// and a magic property instead of a magic string
-			//ViewData["Movie"] = movie;
-			//return View();
-
-			// Better to use this:
-			//return View(movie);
-			// Can also use this as the return object
-			//return new ViewResult();
 		}
 
 		public ActionResult Edit(int id) {
 			return Content("id = " + id);
 		}
 
-		//public ActionResult Index(int? pageIndex, string sortBy) {
-		//	if (!pageIndex.HasValue) {
-		//		pageIndex = 1;
-		//	}
-
-		//	if(String.IsNullOrWhiteSpace(sortBy)) {
-		//		sortBy = "Name";
-		//	}
-
-		//	return Content($"pageIndex={pageIndex} & sortBy={sortBy}");
-		//}
+		
 		public ActionResult Index() {
-			return View(_movies);
+			var movies = _context.Movies.ToList();
+			return View(movies);
 		}
 
 		[Route("movies/released/{year}/{month:regex(\\d{2}):range(1,12)}")]
@@ -74,12 +48,16 @@ namespace Vidly.Controllers
 
 		[Route("Movies/Details/{id}")]
 		public ActionResult GetDetail(int id) {
-			var movie = _movies.Find(x => x.Id == id);
+			var movie = _context.Movies.Where(x => x.Id == id).FirstOrDefault();
 			if (movie == null) {
 				return new HttpNotFoundResult();
 			}
 
 			return View("Detail", movie);
+		}
+
+		protected override void Dispose(bool disposing) {
+			_context.Dispose();
 		}
 	}
 }
