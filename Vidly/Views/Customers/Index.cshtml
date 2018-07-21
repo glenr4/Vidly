@@ -19,15 +19,21 @@
                 <th scope="col">
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
+                <th scope="col">
+                    Discount Rate
+                </th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model) {
-                <tr class="table-default" onclick="location.href = '@(Url.Action("Details", "Customers", new { id = item.Id }))'">
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                </tr>
+            <tr class="table-default" onclick="location.href = '@(Url.Action("Details", "Customers", new { id = item.Id }))'">
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.MembershipType.DiscountRate%
+                </td>
+            </tr>
 }            
             </tbody>    
     </table>
