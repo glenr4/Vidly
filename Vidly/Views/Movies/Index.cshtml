@@ -19,6 +19,9 @@
                 <th scope="col">
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
+                <th scope="col">
+                    Genre
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +29,9 @@
                 <tr class="table-default" onclick="location.href = '@(Url.Action("Details", "Movies", new { id = item.Id }))'">
                     <td>
                         @item.Name
+                    </td>
+                    <td>
+                        @item.Genre
                     </td>
                 </tr>
 }            
