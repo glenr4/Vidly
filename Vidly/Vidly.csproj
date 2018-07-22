@@ -231,6 +231,14 @@
     <Compile Include="Migrations\201807221939445_AddDateOfBirth.Designer.cs">
       <DependentUpon>201807221939445_AddDateOfBirth.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807222054573_AddExtraMovieFields.cs" />
+    <Compile Include="Migrations\201807222054573_AddExtraMovieFields.Designer.cs">
+      <DependentUpon>201807222054573_AddExtraMovieFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807222057087_AddMovieData.cs" />
+    <Compile Include="Migrations\201807222057087_AddMovieData.Designer.cs">
+      <DependentUpon>201807222057087_AddMovieData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -345,6 +353,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807221939445_AddDateOfBirth.resx">
       <DependentUpon>201807221939445_AddDateOfBirth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807222054573_AddExtraMovieFields.resx">
+      <DependentUpon>201807222054573_AddExtraMovieFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807222057087_AddMovieData.resx">
+      <DependentUpon>201807222057087_AddMovieData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
