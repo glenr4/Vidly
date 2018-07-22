@@ -19,8 +19,11 @@
                 <th scope="col">
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
-                <th scope="col">
+                @*<th scope="col">
                     Discount Rate
+                </th>*@
+                <th>
+                    Membership Type
                 </th>
             </tr>
         </thead>
@@ -30,8 +33,11 @@
                 <td>
                     @item.Name
                 </td>
-                <td>
+                @*<td>
                     @item.MembershipType.DiscountRate%
+                </td>*@
+                <td>
+                    @item.MembershipType.Name
                 </td>
             </tr>
 }            
