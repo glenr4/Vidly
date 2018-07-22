@@ -2,3 +2,13 @@
 
 
 <h2>@Model.Name</h2>
+<ul>
+    <li>
+        @Model.MembershipType.Name
+    </li>
+    @if(Model.DateOfBirth != null) {
+    <li>
+        @Html.DisplayFor(x => x.DateOfBirth) @*Need to use this method to format correctly*@
+    </li>
+    }
+</ul>
