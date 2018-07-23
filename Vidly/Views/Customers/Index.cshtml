@@ -29,18 +29,20 @@
         </thead>
         <tbody>
             @foreach (var item in Model) {
-            <tr class="table-default" onclick="location.href = '@(Url.Action("Details", "Customers", new { id = item.Id }))'">
-                <td>
-                    @item.Name
-                </td>
-                @*<td>
-                    @item.MembershipType.DiscountRate%
-                </td>*@
-                <td>
-                    @item.MembershipType.Name
-                </td>
-            </tr>
-}            
+                <tr>
+                    <td>@Html.ActionLink(item.Name, "Edit", "Customers", new { id = item.Id }, null) </td>
+                @*<tr class="table-default" onclick="location.href = '@(Url.Action("Details", "Customers", new { id = item.Id }))'">
+                    <td>
+                        @item.Name
+                    </td>*@
+                    @*<td>
+                        @item.MembershipType.DiscountRate%
+                    </td>*@
+                    <td>
+                        @item.MembershipType.Name
+                    </td>
+                </tr>
+            }            
             </tbody>    
     </table>
     }

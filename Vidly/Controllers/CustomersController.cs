@@ -43,7 +43,7 @@ namespace Vidly.Controllers
 
 		public ActionResult New() {
 			var membershipTypes = _context.MembershipTypes.ToList();
-			var viewModel = new NewCustomerViewModel {
+			var viewModel = new CustomerFormViewModel {
 				MembershipTypes = membershipTypes
 			};
 
@@ -51,11 +51,40 @@ namespace Vidly.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Create(Customer customer) {
-			_context.Customers.Add(customer);
+		public ActionResult Save(Customer customer) {
+			if (customer.Id == 0) {
+				_context.Customers.Add(customer);
+			}
+			else {
+				var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+
+				//Don't use TryUpdateMode as it allows updating all fields
+				// Could use AutoMapper instead of listing all 
+				// Or use a DTO object which only contains the properties that are
+				// allowed to be changed
+				customerInDb.Name = customer.Name;
+				customerInDb.DateOfBirth = customer.DateOfBirth;
+				customerInDb.MembershipType = customer.MembershipType;
+				customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
+			}
 			_context.SaveChanges();
 
 			return RedirectToAction("Index", "Customers");
+		}
+
+		public ActionResult Edit(int id) {
+			var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+
+			if(customer == null) {
+				return HttpNotFound();
+			}
+
+			var viewModel = new CustomerFormViewModel {
+				Customer = customer,
+				MembershipTypes = _context.MembershipTypes.ToList()
+			};
+
+			return View("CustomerForm", viewModel);
 		}
 
 		protected override void Dispose(bool disposing) {
