@@ -10,33 +10,35 @@
 </head>
 <body>
     <h1>Movies</h1>
+    <button class="btn btn-primary" onclick="location.href = '@(Url.Action("New", "Movies"))'" >New Movie</button>
+    
+
+
     @if (Model.Count() > 0) {
-
-
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th scope="col">
-                    Genre
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model) {
-                <tr class="table-default" onclick="location.href = '@(Url.Action("Details", "Movies", new { id = item.Id }))'">
-                    <td>
-                        @item.Name
-                    </td>
-                    <td>
-                        @item.Genre.Name
-                    </td>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th scope="col">
+                        Genre
+                    </th>
                 </tr>
-}            
-            </tbody>    
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                    <tr class="table-default" onclick="location.href = '@(Url.Action("Edit", "Movies", new { id = item.Id }))'">
+                        <td>
+                            @item.Name
+                        </td>
+                        <td>
+                            @item.Genre.Name
+                        </td>
+                    </tr>
+    }            
+                </tbody>    
+        </table>
     }
     else {
         <p>We currently don't have any movies :(</p>

@@ -208,7 +208,7 @@
     <Compile Include="Migrations\201807240029558_GenreReferenceData.Designer.cs">
       <DependentUpon>201807240029558_GenreReferenceData.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\MovieViewModel.cs" />
+    <Compile Include="ViewModels\MovieFormViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
