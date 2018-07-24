@@ -200,6 +200,15 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Migrations\201807240020131_AddMovieGenre.cs" />
+    <Compile Include="Migrations\201807240020131_AddMovieGenre.Designer.cs">
+      <DependentUpon>201807240020131_AddMovieGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807240029558_GenreReferenceData.cs" />
+    <Compile Include="Migrations\201807240029558_GenreReferenceData.Designer.cs">
+      <DependentUpon>201807240029558_GenreReferenceData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\MovieViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -242,13 +251,14 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\NewCustomerViewModel.cs" />
+    <Compile Include="ViewModels\CustomerFormViewModel.cs" />
     <Compile Include="ViewModels\RandomMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -317,6 +327,7 @@
     <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Movies\Random.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
+    <Content Include="Views\Movies\MovieForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -361,6 +372,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807232107100_FixMembershipTypeId.resx">
       <DependentUpon>201807232107100_FixMembershipTypeId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807240020131_AddMovieGenre.resx">
+      <DependentUpon>201807240020131_AddMovieGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807240029558_GenreReferenceData.resx">
+      <DependentUpon>201807240029558_GenreReferenceData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
