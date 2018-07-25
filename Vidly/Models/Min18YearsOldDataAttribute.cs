@@ -5,6 +5,9 @@ using System.Linq;
 using System.Web;
 
 namespace Vidly.Models {
+	/// <summary>
+	/// Note: this will only work with server side validation
+	/// </summary>
 	public class Min18YearsOldDataAttribute : ValidationAttribute {
 		protected override ValidationResult IsValid(object value, ValidationContext validationContext) {
 			var customer = (Customer)validationContext.ObjectInstance;
