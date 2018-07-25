@@ -208,6 +208,10 @@
     <Compile Include="Migrations\201807240029558_GenreReferenceData.Designer.cs">
       <DependentUpon>201807240029558_GenreReferenceData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807252053369_UpdateMovieDatesNullable.cs" />
+    <Compile Include="Migrations\201807252053369_UpdateMovieDatesNullable.Designer.cs">
+      <DependentUpon>201807252053369_UpdateMovieDatesNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Min18YearsOldDataAttribute.cs" />
     <Compile Include="ViewModels\MovieFormViewModel.cs" />
     <Compile Include="Global.asax.cs">
@@ -379,6 +383,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807240029558_GenreReferenceData.resx">
       <DependentUpon>201807240029558_GenreReferenceData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807252053369_UpdateMovieDatesNullable.resx">
+      <DependentUpon>201807252053369_UpdateMovieDatesNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
