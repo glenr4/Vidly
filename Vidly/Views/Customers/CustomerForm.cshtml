@@ -32,11 +32,16 @@
     //Need this data point but don't want to display it (need to pass Id from Model, otherwise the form
     // will pass an empty string which will fail on validation)
     @Html.HiddenFor(m => m.Customer.Id, new { @Value = Model.Customer.Id })
+    //Anti Cross Site Request Forgery (CSRF) attack token
+    @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary">Save</button>
 }
 
 @section scripts
 {
     @*The enables client side validation and uses the bundle in: BundleConfig*@
+    @* A __RequestVerificationToken is added as a hidden field to the form and is paired with a cookie 
+        with same Name but the token is encrypted. The server then compares both to confirm the request
+        came from the correct form, otherwise it is considered as an attack.*@
     @Scripts.Render("~/bundles/jqueryval")
 }
