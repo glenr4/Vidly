@@ -10,16 +10,19 @@
     <div class="form-group">
         @Html.LabelFor(x => x.Customer.Name)
         @Html.TextBoxFor(x => x.Customer.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Customer.Name)
     </div>
     <div class="form-group">
         @*@Html.LabelFor(x => x.DateOfBirth)*@
         <label for="Customer_DateOfBirth">Date of Birth</label>
         @Html.TextBoxFor(x => x.Customer.DateOfBirth, "{0:d}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Customer.DateOfBirth)
     </div>
     <div class="form-group">
         @*@Html.LabelFor(x => x.Customer.MembershipType)*@
         <label for="Customer_MembershipTypeId">Membership Type</label>
         @Html.DropDownListFor(x => x.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Customer.MembershipTypeId)
     </div>
     <div class="checkbox">
         <label>
@@ -27,6 +30,6 @@
         </label>
     </div>
     //Need this data point but don't want to display it
-    @Html.HiddenFor(m => m.Customer.Id)
+    @Html.HiddenFor(m => m.Customer.Id, new { @Value = Model.Customer.Id })
     <button type="submit" class="btn btn-primary">Save</button>
 }

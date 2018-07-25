@@ -25,3 +25,11 @@ textarea {
 .navbar{
     padding: 0px 78px;
 }
+
+.field-validation-error {
+    color: red;
+}
+
+.input-validation-error {
+    border: solid 2px red;
+}

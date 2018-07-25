@@ -13,6 +13,7 @@ namespace Vidly.Models {
 		public string Name { get; set; }
 
 		public Genre Genre { get; set; }
+
 		public int GenreId { get; set; }
 
 		[DisplayFormat(DataFormatString = "{0:D}")]
