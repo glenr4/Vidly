@@ -1,9 +1,11 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Vidly.Dtos;
 using Vidly.Models;
 
 namespace Vidly.Controllers.Api
@@ -17,38 +19,41 @@ namespace Vidly.Controllers.Api
 		}
 
 		// GET /api/customers
-		public IEnumerable<Customer> GetCustomers() {
-			return _context.Customers.ToList();
+		public IEnumerable<CustomerDto> GetCustomers() {
+			return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
 		}
 
 		// GET /api/customers/1
-		public Customer GetCustomer(int id) {
+		public CustomerDto GetCustomer(int id) {
 			var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
 
 			if (customer == null) {
 				throw new HttpResponseException(HttpStatusCode.NotFound);
 			}
-			else {
-				return customer;
-			}
+			
+			return Mapper.Map<Customer,CustomerDto>(customer);
+			
 		}
 
 		// POST /api/customers
 		[HttpPost]
-		public Customer CreateCustomer(Customer customer) {
+		public CustomerDto CreateCustomer(CustomerDto customerDto) {
 			if (!ModelState.IsValid) {
 				throw new HttpResponseException(HttpStatusCode.BadRequest);
 			}
-			
+
+			var customer = Mapper.Map<CustomerDto, Customer>(customerDto);
 			_context.Customers.Add(customer);
 			_context.SaveChanges();
 
-			return customer;
+			customerDto.Id = customer.Id;
+
+			return customerDto;
 		}
 
 		// PUT /api/customer/1
 		[HttpPut]
-		public void UpdateCustomer(int id, Customer customer) {
+		public void UpdateCustomer(int id, CustomerDto customerDto) {
 			if (!ModelState.IsValid) {
 				throw new HttpResponseException(HttpStatusCode.BadRequest);
 			}
@@ -58,10 +63,11 @@ namespace Vidly.Controllers.Api
 				throw new HttpResponseException(HttpStatusCode.NotFound);
 			}
 
-			customerInDb.Name = customer.Name;
-			customerInDb.DateOfBirth = customer.DateOfBirth;
-			customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
-			customerInDb.MembershipTypeId = customer.MembershipTypeId;
+			Mapper.Map(customerDto, customerInDb);
+			//customerInDb.Name = customerDto.Name;
+			//customerInDb.DateOfBirth = customerDto.DateOfBirth;
+			//customerInDb.IsSubscribedToNewsletter = customerDto.IsSubscribedToNewsletter;
+			//customerInDb.MembershipTypeId = customerDto.MembershipTypeId;
 
 			_context.SaveChanges();
 		}
