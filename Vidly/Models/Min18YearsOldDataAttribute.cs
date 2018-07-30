@@ -7,6 +7,8 @@ using System.Web;
 namespace Vidly.Models {
 	/// <summary>
 	/// Note: this will only work with server side validation
+	/// TODO: need to refactor to use with CustomerDto and redirect PUT/POST in Web
+	/// version of CustomerController to Api/CustomerController. 
 	/// </summary>
 	public class Min18YearsOldDataAttribute : ValidationAttribute {
 		protected override ValidationResult IsValid(object value, ValidationContext validationContext) {
