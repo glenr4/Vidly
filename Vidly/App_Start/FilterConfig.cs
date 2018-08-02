@@ -8,6 +8,8 @@ namespace Vidly {
 
 			// Apply Authorization required by default
 			filters.Add(new AuthorizeAttribute());
+
+			filters.Add(new RequireHttpsAttribute());
 		}
 	}
 }

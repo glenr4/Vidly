@@ -17,9 +17,9 @@
     <AssemblyName>Vidly</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44330</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -234,6 +234,10 @@
     <Compile Include="Migrations\201808020249203_SeedUsers.Designer.cs">
       <DependentUpon>201808020249203_SeedUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808020319127_AddDriversLicenseToApplicationUser.cs" />
+    <Compile Include="Migrations\201808020319127_AddDriversLicenseToApplicationUser.Designer.cs">
+      <DependentUpon>201808020319127_AddDriversLicenseToApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Min18YearsOldDataAttribute.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="ViewModels\MovieFormViewModel.cs" />
@@ -415,6 +419,9 @@
     <EmbeddedResource Include="Migrations\201808020249203_SeedUsers.resx">
       <DependentUpon>201808020249203_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808020319127_AddDriversLicenseToApplicationUser.resx">
+      <DependentUpon>201808020319127_AddDriversLicenseToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -434,7 +441,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52548</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/Vidly</IISUrl>
+          <IISUrl>https://localhost:44330/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
