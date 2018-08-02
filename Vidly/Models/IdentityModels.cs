@@ -25,9 +25,20 @@ namespace Vidly.Models
 		public DbSet<MembershipType> MembershipTypes { get; set; }
 		public DbSet<Genre> Genres { get; set; }
 
-		public ApplicationDbContext()
-			: base("DefaultConnection", throwIfV1Schema: false)
-		{
+		/// <summary>
+		/// Creates Database for localdb or SQLExpress only
+		/// </summary>
+		//public ApplicationDbContext()
+		//	: base("DefaultConnection", throwIfV1Schema: false) {
+		//}
+
+		/// <summary>
+		/// Creates the Database if it doesn't exist using the named Connection String
+		/// </summary>
+		public ApplicationDbContext() : base("name=VidlyConnectionString") {
+			Database.SetInitializer(new CreateDatabaseIfNotExists<ApplicationDbContext>());
+
+			//Database.SqlQuery
 		}
 
 		public static ApplicationDbContext Create()
