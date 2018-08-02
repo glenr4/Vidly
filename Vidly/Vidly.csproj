@@ -217,7 +217,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Dtos\CustomerDto.cs" />
-    <Compile Include="Dtos\Movie.cs" />
+    <Compile Include="Dtos\MovieDto.cs" />
     <Compile Include="Migrations\201807240020131_AddMovieGenre.cs" />
     <Compile Include="Migrations\201807240020131_AddMovieGenre.Designer.cs">
       <DependentUpon>201807240020131_AddMovieGenre.cs</DependentUpon>
@@ -229,6 +229,10 @@
     <Compile Include="Migrations\201807252053369_UpdateMovieDatesNullable.cs" />
     <Compile Include="Migrations\201807252053369_UpdateMovieDatesNullable.Designer.cs">
       <DependentUpon>201807252053369_UpdateMovieDatesNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808020249203_SeedUsers.cs" />
+    <Compile Include="Migrations\201808020249203_SeedUsers.Designer.cs">
+      <DependentUpon>201808020249203_SeedUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Min18YearsOldDataAttribute.cs" />
     <Compile Include="ViewModels\MovieFormViewModel.cs" />
@@ -406,6 +410,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807252053369_UpdateMovieDatesNullable.resx">
       <DependentUpon>201807252053369_UpdateMovieDatesNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808020249203_SeedUsers.resx">
+      <DependentUpon>201808020249203_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

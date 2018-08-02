@@ -6,8 +6,8 @@ namespace Vidly {
 		public static void RegisterGlobalFilters(GlobalFilterCollection filters) {
 			filters.Add(new HandleErrorAttribute());
 
-			// TODO: this does not work for IISExpress
-			//filters.Add(new AuthorizeAttribute());
+			// Apply Authorization required by default
+			filters.Add(new AuthorizeAttribute());
 		}
 	}
 }

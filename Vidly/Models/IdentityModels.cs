@@ -37,8 +37,6 @@ namespace Vidly.Models
 		/// </summary>
 		public ApplicationDbContext() : base("name=VidlyConnectionString") {
 			Database.SetInitializer(new CreateDatabaseIfNotExists<ApplicationDbContext>());
-
-			//Database.SqlQuery
 		}
 
 		public static ApplicationDbContext Create()
