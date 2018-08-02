@@ -235,6 +235,7 @@
       <DependentUpon>201808020249203_SeedUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Min18YearsOldDataAttribute.cs" />
+    <Compile Include="Models\RoleName.cs" />
     <Compile Include="ViewModels\MovieFormViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
